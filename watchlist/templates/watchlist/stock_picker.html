@@ -11,16 +11,19 @@ Stock Picker
 
 {%  block body %}
 <div class="container">
-    <h1>Live Stock Tracker</h1>
+    <h1>Stock Picker</h1>
 
-    <form action="">
+    <form action="/track/" method="get">
         <label>Select Stocks:</label>
-        <select class="form-select form-select-lg mb-3" multiple aria-label="multiple select example" name="stockpicker">
-          <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+        <select class="form-select" size="15" multiple aria-label="multiple select example" name="stock_list">
+            {% for stock in nifty_stocks %}
+                <option value="{{ stock }}">{{ stock }}</option>
+            {% endfor %}
         </select>
+        <br>
+        <div class="d-grid gap-2">
+            <input class="btn btn-primary" type="submit" value="Submit">
+        </div>
     </form>
 </div>
 {% endblock body %}
